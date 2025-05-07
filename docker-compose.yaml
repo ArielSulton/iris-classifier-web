@@ -1,0 +1,22 @@
+services:
+  backend:
+    container_name: iris-backend
+    image: iris-backend
+    ports:
+      - "8080:8000"
+    networks:
+      - iris-net
+
+  frontend:
+    container_name: iris-frontend
+    image: iris-frontend
+    ports:
+      - "3030:3000"
+    networks:
+      - iris-net
+    depends_on:
+      - backend
+
+networks:
+  iris-net:
+    driver: bridge

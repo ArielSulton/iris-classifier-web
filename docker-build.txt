@@ -1,0 +1,8 @@
+fastapi build
+docker build --network=host -t iris-backend ./backend
+
+development build
+docker build --network=host  --build-arg NEXT_PUBLIC_API_URL=http://localhost:8080 -t iris-frontend ./frontend
+
+production build
+docker build --network=host  --build-arg NEXT_PUBLIC_API_URL=http://backend:8000 -t iris-frontend ./frontend
